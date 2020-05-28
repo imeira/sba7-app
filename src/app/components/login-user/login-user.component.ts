@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserLogin } from 'src/app/core/model/login';
 import { ApiService } from 'src/app/core/api.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'src/app/core/message.service';
 
 @Component({
   selector: 'app-login-user',
@@ -12,7 +13,9 @@ export class LoginUserComponent implements OnInit {
 
   user = new UserLogin();
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, 
+              private router: Router,
+              private messageService: MessageService) { }
 
   ngOnInit() {
   }
@@ -22,7 +25,7 @@ export class LoginUserComponent implements OnInit {
       this.loginSuccess(data);
       console.log(data);
     }, error => {
-      console.log('Error ao fazer LOGIN!');
+      this.messageService.showError('Login', 'Falha de autenticação');
     });
   }
 
@@ -32,8 +35,9 @@ export class LoginUserComponent implements OnInit {
     localStorage.setItem('refreshToken', data.refresh_token);
     this.apiService.getMainUser(localStorage.getItem('accessToken')).subscribe(user => {
       this.redirectPage(user);
+      this.messageService.showSuccess('Bem Vindo ao Curso', 'Curso de Spring Boot e Angular 7');
     }, error => {
-      console.log('Error ao pegar usuário logado!');
+      this.messageService.showError('Usuário principal', 'Falha ao carregar usuário principal');
     });
   }
 

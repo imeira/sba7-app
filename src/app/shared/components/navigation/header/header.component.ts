@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'src/app/core/message.service';
 
 @Component({
   selector: 'app-header',
@@ -10,16 +11,19 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private apiService: ApiService, 
+              private router: Router,
+              private messageService: MessageService) { }
 
   ngOnInit() {
   }
-  logou() {
+  logout() {
     this.apiService.logout().subscribe(() => {
       this.clearLocalStore();
+      this.messageService.showSuccess('Logout', 'Logout realizado com sucesso');
       this.router.navigate(['login']);
     }, error => {
-      console.log('Error ao tentar fazer o logout ', error);
+      this.messageService.showError('Logout', 'Error ao tentar fazer logout');
     });
   }
   clearLocalStore () {

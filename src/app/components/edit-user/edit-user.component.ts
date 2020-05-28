@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserDTO } from 'src/app/core/model/userDTO';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { MessageService } from 'src/app/core/message.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -16,6 +17,7 @@ export class EditUserComponent implements OnInit {
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
+              private messageService: MessageService,
               private location: Location) { }
 
   ngOnInit() {
@@ -30,9 +32,10 @@ export class EditUserComponent implements OnInit {
   update(): void {
     this.user.id = this.idUser;
     this.apiService.updateUser(this.user).subscribe(() => {
+      this.messageService.showSuccess('Atualizado', 'Usuário atualizado com sucesso!');
       this.goBack();
     }, error => {
-      console.log('Error ao atualizar usuário! ', error);
+      this.messageService.showError('Falha de Atualização', 'Falha ao tentar atualizar usuário!');
     });
   }
   goBack() {
