@@ -27,4 +27,12 @@ export class ListUserComponent implements OnInit {
   getRole(user: UserDTO) {
     return this.apiService.getRole(user.roles);
   }
+  deleteUser(user: UserDTO): void {
+    this.apiService.deleteUser(user.id).subscribe(() => {
+      this.users = this.users.filter(u => u.id !== user.id);
+
+    }, error => {
+      console.log('Error ao deletar usuário! ', error);
+    });
+  }
 }

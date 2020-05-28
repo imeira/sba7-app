@@ -21,10 +21,12 @@
       <td>{{getRole(user)}}</td>
       <td>
         <div class="btn-group btn-group-sm">
+          <button class="btn btn-danger " (click)="deleteUserModal.show()"> Excluir</button>
           <button class="btn btn-info " [routerLink]="['/edit-user', user.id]" style="margin-left: 20px;"> Editar</button>
         </div>
       </td>
-  
+      <app-delete-user-modal #deleteUserModal [recebeItem]="user" (resposta)="deleteUser($event)"></app-delete-user-modal>
+      
     </tr>
     </tbody>
   </table>
