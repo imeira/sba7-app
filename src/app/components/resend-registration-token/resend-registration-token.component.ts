@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserDTO } from 'src/app/core/model/userDTO';
 
 @Component({
   selector: 'app-resend-registration-token',

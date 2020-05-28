@@ -60,5 +60,14 @@ export class ApiService {
   registerUser(user: UserDTO): Observable<any> {
     return this.httpClient.post<any>(AppUtils.REGISTER_URL, user, {headers: AppUtils.HEADERS_COMMUN});
   }
+  confirmationRegisterToken(token: string): Observable<any> {
+    const params = new HttpParams()
+      .set('token', token);
+    const options = {
+        headers: AppUtils.HEADERS_COMMUN,
+        params
+      };
+    return this.httpClient.get<any>(AppUtils.CONFIRM_REGISTER_URL, options);
+  }
 
 }
