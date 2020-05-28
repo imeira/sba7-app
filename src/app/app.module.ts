@@ -16,6 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ApiService } from './core/api.service';
 import { InterceptorService } from './core/interceptor.service';
+import { AuthGuard } from './core/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { InterceptorService } from './core/interceptor.service';
     ReactiveFormsModule, FormsModule
 
   ],
-  providers: [ApiService,
+  providers: [ApiService, AuthGuard,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: InterceptorService,

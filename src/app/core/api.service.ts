@@ -44,5 +44,16 @@ export class ApiService {
         params
       };
     return this.httpClient.post(AppUtils.URL_TOKEN, null, options);
-  } 
+  }
+
+  isAuthenticated(): Observable<boolean> {
+    return new Observable<boolean> (observer => {
+      if (JSON.parse(localStorage.getItem('currentUser'))) {
+        observer.next(true);
+        observer.complete();
+      } else {
+        observer.next(false);
+      }
+    });
+  }
 }
