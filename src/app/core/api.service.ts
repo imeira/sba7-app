@@ -35,17 +35,19 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.baseUrl}` + '/main', AppUtils.OPTIONS_OBJECTO);
   }
 
-  getAccessToken(refreshToken): Observable<any> {
-    const params = new HttpParams()
-      .set('grant_type', 'refresh_token')
-      .set('refresh_token', refreshToken);
+  getAccessToken(refreshToken): Observable<any>  {
 
+    const params = new HttpParams()
+    .set('grant_type', 'refresh_token')
+    .set('refresh_token', refreshToken);
+  
     const options = {
-        headers: AppUtils.HEADERS_COMMUN,
+      headers: AppUtils.HEADERS_COMMUN,
         params
       };
-    return this.httpClient.post(AppUtils.URL_TOKEN, null, options);
-  }
+    return this.httpClient.post(AppUtils.URL_TOKEN, null,  options);
+  
+    }
 
   isAuthenticated(): Observable<boolean> {
     return new Observable<boolean> (observer => {
@@ -100,5 +102,8 @@ export class ApiService {
   }
   updateUser(user: UserDTO): Observable<any> {
     return this.httpClient.put<any>(`${this.baseUrl}/${user.id}`, user, AppUtils.OPTIONS_OBJECTO);
+    }
+    logout(): Observable<any> {
+      return this.httpClient.get<any>(`${AppUtils.BASE_URL}` + 'api/logout', AppUtils.OPTIONS_OBJECTO);
     }
 }

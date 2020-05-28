@@ -21,7 +21,8 @@ export class EditUserComponent implements OnInit {
   ngOnInit() {
     this.idUser = this.route.snapshot.paramMap.get('id');
     this.apiService.getUserById(this.idUser).subscribe(user => {
-      console.log('Retornou usuário com sucesso! ');
+     this.user = user;
+     console.log('Retornou usuário com sucesso! ');
     }, error => {
       console.log('Error ao pegar usuário por ID! ', error);
     });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,12 +10,12 @@ import { ApiService } from 'src/app/core/api.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
   }
-  logout() {}
-  
+
+
   isAutenticated(): Observable<boolean> {
     return this.apiService.isAuthenticated();
   }

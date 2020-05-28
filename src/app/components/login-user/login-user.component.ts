@@ -20,6 +20,7 @@ export class LoginUserComponent implements OnInit {
   public login() {
     this.apiService.login(this.user).subscribe(data => {
       this.loginSuccess(data);
+      console.log(data);
     }, error => {
       console.log('Error ao fazer LOGIN!');
     });
