@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import * as AppUtils from '../shared/comum/app.utils';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { UserLogin } from './model/login';
+import { UserDTO } from './model/userDTO';
 
 
 @Injectable({
@@ -56,4 +57,8 @@ export class ApiService {
       }
     });
   }
+  registerUser(user: UserDTO): Observable<any> {
+    return this.httpClient.post<any>(AppUtils.REGISTER_URL, user, {headers: AppUtils.HEADERS_COMMUN});
+  }
+
 }

@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
   logout() {}
+  
   isAutenticated(): Observable<boolean> {
     return this.apiService.isAuthenticated();
   }
