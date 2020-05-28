@@ -10,7 +10,7 @@ import { UserDTO } from 'src/app/core/model/userDTO';
 })
 export class ListUserComponent implements OnInit {
   users: UserDTO[];
-] 
+
   constructor(private router: Router,
               private apiService: ApiService) { }
 
