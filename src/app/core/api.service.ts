@@ -69,5 +69,13 @@ export class ApiService {
       };
     return this.httpClient.get<any>(AppUtils.CONFIRM_REGISTER_URL, options);
   }
-
+  resendRegisterToken(user: UserDTO): Observable<any> {
+    const params = new HttpParams()
+      .set('email', user.email);
+    const options = {
+        headers: AppUtils.HEADERS_COMMUN,
+        params
+      };
+    return this.httpClient.get<any>(AppUtils.RESEND_REGISTER_TOKEN_URL, options);
+  }
 }
