@@ -34,5 +34,15 @@ export class ApiService {
     return this.httpClient.get<any>(`${this.baseUrl}` + '/main', AppUtils.OPTIONS_OBJECTO);
   }
 
-  
+  getAccessToken(refreshToken): Observable<any> {
+    const params = new HttpParams()
+      .set('grant_type', 'refresh_token')
+      .set('refresh_token', refreshToken);
+
+    const options = {
+        headers: AppUtils.HEADERS_COMMUN,
+        params
+      };
+    return this.httpClient.post(AppUtils.URL_TOKEN, null, options);
+  } 
 }
