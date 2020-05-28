@@ -14,7 +14,19 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  logou() {
+    this.apiService.logout().subscribe(() => {
+      this.clearLocalStore();
+      this.router.navigate(['login']);
+    }, error => {
+      console.log('Error ao tentar fazer o logout ', error);
+    });
+  }
+  clearLocalStore () {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('currentUser');
+  }
 
   isAutenticated(): Observable<boolean> {
     return this.apiService.isAuthenticated();
