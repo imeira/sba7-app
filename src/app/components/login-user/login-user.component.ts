@@ -12,8 +12,8 @@ import { MessageService } from 'src/app/core/message.service';
 export class LoginUserComponent implements OnInit {
 
   user = new UserLogin();
-
-  constructor(private apiService: ApiService, 
+  submitted = false;
+  constructor(private apiService: ApiService,
               private router: Router,
               private messageService: MessageService) { }
 

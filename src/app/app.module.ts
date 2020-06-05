@@ -20,6 +20,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MessageService } from './core/message.service';
+import {RegisterConfirmationComponent} from './components/register-user/register-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MessageService } from './core/message.service';
     ListUserComponent,
     WelcomeComponent,
     HeaderComponent,
-    DeleteUserModalComponent
+    DeleteUserModalComponent,
+    RegisterConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,7 @@ import { MessageService } from './core/message.service';
     multi : true
     }
     ],
-   
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
