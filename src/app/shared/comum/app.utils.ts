@@ -1,6 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 
-export const BASE_URL = 'https://sba7.herokuapp.com/';
+export const BASE_URL = 'https://appsba7.herokuapp.com/';
 export const URL_TOKEN = BASE_URL + 'oauth/token';
 export const REGISTER_URL = BASE_URL + 'api/public/registration/users';
 export const CONFIRM_REGISTER_URL = BASE_URL + 'api/public/regitrationConfirm/users';
